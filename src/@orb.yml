@@ -1,7 +1,13 @@
 version: 2.1
 
 description: >
-  An orb for detecting git submodule changes.
+  An orb for detecting git submodule changes. The `git log -p --first-parent --merges -1` command
+  is ran and the output text is searched for the `Submodule ` string. For each occurrence detected
+  a line is created in a specific ouptut parameter file.
+  
+  Ex. A repository contains two git submodules: sub-project-1 and sub-project-2. The last push had
+  changes to the sub-project-2. The git-submodule-changes orb will generate a file containing the
+  following content `{"sub-project-2": "true"}``.
 
 display:
   home_url: "https://github.com/ButterflyNetwork/git-submodule-changes-orb"

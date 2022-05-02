@@ -1,5 +1,5 @@
 description: >
-  Continue a pipeline from the setup phase with pipeline parameters 
+  Continue a pipeline from the setup phase with pipeline parameters
   generated from the detected git submodule changes.
 usage:
   version: 2.1
