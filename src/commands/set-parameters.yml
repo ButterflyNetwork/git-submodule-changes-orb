@@ -1,0 +1,15 @@
+description: >
+  Generates a set of pipeline parameters at `output-path`.
+parameters:
+  output-path:
+    type: string
+    default: "/tmp/pipeline-parameters.json"
+    description: >
+      Path to save the generated parameters to.
+steps:
+  - run:
+      environment:
+        OUTPUT_PATH: << parameters.output-path >>
+      name: Set parameters
+      shell: /usr/bin/env python3
+      command: <<include(scripts/create-parameters.py)>>
