@@ -37,8 +37,11 @@ def write_json(content):
   output_path = os.environ.get('OUTPUT_PATH')
 
   with open(output_path, 'w') as fp:
-    fp.write(json.dumps(content))
-
+    if(content):
+      fp.write(json.dumps(content))
+    else:
+      fp.write("{}")
+    
 submodules_count = submodules_count()
 terminate = False
 
