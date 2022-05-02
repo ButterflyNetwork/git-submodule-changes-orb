@@ -27,28 +27,37 @@ def changed_submodules():
   changed_list = []
 
   for item in raw_changes:
-    # ['submodule-1','b02a2f3..4f6c53c:']
+    # ['olympus-frontend','b02a2f3..4f6c53c:']
     changed_list.append(item[0])
     print(f'Submodule {item[0]} updated from {item[1][:7]} to {item[1][9:16]}')
   
   return changed_list
 
+def write_json(content):
+  output_path = os.environ.get('OUTPUT_PATH')
+
+  with open(output_path, 'w') as fp:
+    fp.write(json.dumps(content))
+
 submodules_count = submodules_count()
+terminate = False
 
 if(submodules_count > 0):
   print(f"Total of {submodules_count} submodule(s) detected.")
 else:
   print("No submodules in the repo.")
-  exit()
+  write_json("")
+  terminate = True
 
 changed_list = changed_submodules()
 
 if(len(changed_list) == 0):
   print("No submodule(s) changes detected.")
+  write_json("")
+  terminate = True
+
+if (terminate):
   exit()
-
-dict = { i : "true" for i in changed_list }
-output_path = os.environ.get('OUTPUT_PATH')
-
-with open(output_path, 'w') as fp:
-  fp.write(json.dumps(dict))
+else:
+  dict = { i : "true" for i in changed_list }
+  write_json(dict)
