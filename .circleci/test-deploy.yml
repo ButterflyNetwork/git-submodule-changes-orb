@@ -8,15 +8,12 @@ filters: &filters
     only: /.*/
 
 jobs:
-    # Create a job to test the commands of your orbs.
-    # You may want to add additional validation steps to ensure the commands are working as expected.
     command-tests:
       docker:
-        - image: cimg/base:current
+        - image: cimg/python:3.10
       steps:
         - checkout
-        # Run your orb's commands to validate them.
-        - git-submodule-changes/greet
+        - git-submodule-changes/set-parameters
 workflows:
   test-deploy:
     jobs:
