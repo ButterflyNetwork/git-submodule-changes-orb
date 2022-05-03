@@ -13,7 +13,7 @@ def submodules_count():
 
 def changed_submodules():
   raw_changes = subprocess.run(
-    ['git', 'log', '-p', '--first-parent', '--merges', '-1'],
+    ['git', 'log', '-p', '--submodule=log', '--first-parent', '--merges', '-1'],
     check=True,
     capture_output=True
   ).stdout.decode('utf-8').splitlines()

@@ -4,6 +4,8 @@
 
 An orb for detecting git submodule changes.
 
+See the module in practice at: [monorepo-deploy](https://github.com/ButterflyNetwork/monorepo-deploy).
+
 ---
 
 ## Resources
