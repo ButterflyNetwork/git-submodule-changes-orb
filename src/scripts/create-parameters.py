@@ -62,5 +62,5 @@ if(len(changed_list) == 0):
 if (terminate):
   exit()
 else:
-  dict = { i : "true" for i in changed_list }
+  dict = { i : True for i in changed_list }
   write_json(dict)
